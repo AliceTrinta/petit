@@ -1,14 +1,21 @@
 package com.example.petit.domain;
 
-public class URL {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-    public URL(String originalURL, String shortURL){
+@Document("url")
+public class Url {
+
+    public Url(String originalURL, String shortURL){
         this.originalURL = originalURL;
         this.shortURL = shortURL;
     }
 
+    @Field("originalURL")
     public String originalURL;
 
+    @Field("shortURL")
     public String shortURL;
 
     public String getOriginalURL() {

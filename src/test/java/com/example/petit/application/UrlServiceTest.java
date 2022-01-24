@@ -20,11 +20,17 @@ public class UrlServiceTest {
     private UrlService urlService;
 
     @Test
-    public void shouldBeNotEmpty() {
+    public void Given_SomeUrl_When_CallingCreateMethod_Then_DatabaseCollectionShouldNotBeEmpty() {
         //For now, don't forget to clean your database
-        urlService.create("google.com");
+
+        //Arrange
+        var url = "google.com";
+
+        //Act
+        urlService.create(url);
         var list = urlRepository.findAll();
+
+        //Assert
         assertFalse(list.isEmpty());
     }
-
 }

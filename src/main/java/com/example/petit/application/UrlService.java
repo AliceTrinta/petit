@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UrlService {
+public class UrlService{
 
     private UrlRepository urlRepository;
 
@@ -16,7 +16,9 @@ public class UrlService {
         this.urlRepository = urlRepository;
     }
 
-    public void create(String url){
-        urlRepository.save(new Url(url, RandomStringUtils.randomAlphanumeric(6)));
+    public Url create(String url){
+        var urlObject = new Url(url, RandomStringUtils.randomAlphanumeric(6));
+        urlRepository.save(urlObject);
+        return urlObject;
     }
 }

@@ -16,9 +16,13 @@ public class UrlService{
         this.urlRepository = urlRepository;
     }
 
-    public Url create(String url){
+    public Url Create(String url){
         var urlObject = new Url(url, RandomStringUtils.randomAlphanumeric(6));
         urlRepository.save(urlObject);
         return urlObject;
+    }
+
+    public String Get(String shortUrl){
+        return urlRepository.findByShortURL(shortUrl).originalURL;
     }
 }

@@ -5,4 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UrlRepository extends MongoRepository<Url, String> {}
+public interface UrlRepository extends MongoRepository<Url, String> {
+    public Url findByShortURL(String shortURL);
+}

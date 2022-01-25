@@ -17,9 +17,15 @@ public class UrlService{
     }
 
     public Url Create(String url){
-        var urlObject = new Url(url, RandomStringUtils.randomAlphanumeric(6));
-        urlRepository.save(urlObject);
-        return urlObject;
+        var existentUrl = urlRepository.findByOriginalURL(url);
+        if(existentUrl == null){
+            var urlObject = new Url(url, RandomStringUtils.randomAlphanumeric(6), 0);
+            urlRepository.save(urlObject);
+            return urlObject;
+        }
+        existentUrl.timesShortened = existentUrl.timesShortened + 1;
+        urlRepository.save(existentUrl);
+        return existentUrl;
     }
 
     public String Get(String shortUrl){

@@ -24,7 +24,6 @@ public class UrlServiceTest {
     @Test
     public void Given_SomeUrl_When_CallingCreateMethod_Then_DatabaseCollectionShouldNotBeEmpty() {
         //For now, don't forget to clean your database
-
         //Arrange
         var url = "google.com";
 
@@ -38,9 +37,9 @@ public class UrlServiceTest {
 
     @Test
     public void Given_AValidShortUrl_When_CallingGetMethod_Then_ReturnAsExpected() {
-
+        //For now, don't forget to clean your database
         //Arrange
-        var url = new Url("123", "321");
+        var url = new Url("123", "321", 0);
         urlRepository.save(url);
 
         //Act

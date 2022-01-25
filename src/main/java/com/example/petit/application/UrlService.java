@@ -17,9 +17,9 @@ public class UrlService{
     }
 
     public Url Create(String url){
-        var existentUrl = urlRepository.findByOriginalURL(url);
+        Url existentUrl = urlRepository.findByOriginalURL(url);
         if(existentUrl == null){
-            var urlObject = new Url(url, RandomStringUtils.randomAlphanumeric(6), 0);
+            Url urlObject = new Url(url, RandomStringUtils.randomAlphanumeric(6), 0, 0);
             urlRepository.save(urlObject);
             return urlObject;
         }
@@ -29,6 +29,9 @@ public class UrlService{
     }
 
     public String Get(String shortUrl){
-        return urlRepository.findByShortURL(shortUrl).originalURL;
+        Url url = urlRepository.findByShortURL(shortUrl);
+        url.timesAccessed = url.timesAccessed + 1;
+        urlRepository.save(url);
+        return url.originalURL;
     }
 }

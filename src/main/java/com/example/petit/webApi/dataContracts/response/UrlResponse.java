@@ -1,38 +1,21 @@
-package com.example.petit.domain;
+package com.example.petit.webApi.dataContracts.response;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+public class UrlResponse {
 
-@Document("url")
-public class Url {
-
-    public Url(String originalURL, String shortURL, int timesShortened, int timesAccessed){
+    public UrlResponse(String originalURL, String shortURL, int timesShortened, int timesAccessed){
         this.originalURL = originalURL;
         this.shortURL = shortURL;
         this.timesShortened = timesShortened;
         this.timesAccessed = timesAccessed;
     }
 
-    @Id
-    public ObjectId id;
-
-    @Field("originalURL")
     public String originalURL;
 
-    @Field("shortURL")
     public String shortURL;
 
-    @Field("timesShortened")
     public int timesShortened;
 
-    @Field("timesAccessed")
     public int timesAccessed;
-
-    public ObjectId getId() { return id; }
-
-    public void setId(ObjectId id) { this.id = id; }
 
     public String getOriginalURL() {
         return originalURL;

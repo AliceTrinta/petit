@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -24,10 +25,10 @@ public class UrlControllerTest {
     @Test
     public void Given_ARandomUrl_When_CallingCreateShortUrl_Then_Return200() throws Exception {
         //Arrange
-        var url = "google.com";
+        String url = "google.com";
 
         //Act
-        var result = mockMvc.perform(post("/short")
+        ResultActions result = mockMvc.perform(post("/short")
                         .param("url", url));
         //Assert
         result.andExpect(status().isOk());

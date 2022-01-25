@@ -68,7 +68,7 @@ Third step: I recommend to use Postman, in order to access the POST endpoint.
 
 The endpoints are listed above:
 ```sh
-POST - http://localhost:8080/http://localhost:8080/short?url={url}
+POST - http://localhost:8080/short?url={url}
 
 Expected:
 {
